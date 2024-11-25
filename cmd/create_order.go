@@ -141,7 +141,7 @@ func init() {
 	createOrderCmd.Flags().StringP(utils.ProductIdFlag, "r", "", "Product ID (Required)")
 	createOrderCmd.Flags().StringP(utils.LimitPriceFlag, "l", "", "Limit price (required for LIMIT orders)")
 	createOrderCmd.Flags().StringP(utils.StopFlag, "q", "", "Stop type")
-	createOrderCmd.Flags().StringP(utils.SizeFlag, "u", "", "Size")
+	createOrderCmd.Flags().StringP(utils.SizeFlag, "i", "", "Size")
 	createOrderCmd.Flags().StringP(utils.TimeInForceFlag, "f", "", "Time in force")
 	createOrderCmd.Flags().StringP(utils.ClientOrderIdFlag, "c", "", "Client Order ID")
 	createOrderCmd.Flags().StringP(utils.StopPriceFlag, "x", "", "Stop price")

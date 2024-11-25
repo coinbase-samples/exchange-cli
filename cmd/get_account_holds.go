@@ -72,7 +72,7 @@ func init() {
 
 	getAccountHoldsCmd.Flags().StringP(utils.AccountIdFlag, "a", "", "Account ID (Required)")
 	getAccountHoldsCmd.Flags().StringP(utils.PaginationBeforeFlag, "b", "", "Pagination before cursor")
-	getAccountHoldsCmd.Flags().StringP(utils.PaginationAfterFlag, "a", "", "Pagination after cursor")
+	getAccountHoldsCmd.Flags().StringP(utils.PaginationAfterFlag, "f", "", "Pagination after cursor")
 	getAccountHoldsCmd.Flags().StringP(utils.PaginationLimitFlag, "l", "", "Pagination limit")
 	getAccountHoldsCmd.Flags().StringP(utils.FormatFlag, "z", "false", "Pass true for formatted JSON. Default is false")
 

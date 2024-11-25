@@ -87,7 +87,7 @@ func init() {
 	getAccountLedgerCmd.Flags().StringP(utils.StartDateFlag, "s", "", "Start date for filtering ledger entries")
 	getAccountLedgerCmd.Flags().StringP(utils.EndDateFlag, "e", "", "End date for filtering ledger entries")
 	getAccountLedgerCmd.Flags().StringP(utils.PaginationBeforeFlag, "b", "", "Pagination before cursor")
-	getAccountLedgerCmd.Flags().StringP(utils.PaginationAfterFlag, "a", "", "Pagination after cursor")
+	getAccountLedgerCmd.Flags().StringP(utils.PaginationAfterFlag, "f", "", "Pagination after cursor")
 	getAccountLedgerCmd.Flags().StringP(utils.PaginationLimitFlag, "l", "", "Pagination limit")
 	getAccountLedgerCmd.Flags().StringP(utils.FormatFlag, "z", "false", "Pass true for formatted JSON. Default is false")
 
