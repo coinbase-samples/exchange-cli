@@ -54,6 +54,6 @@ var listLoansCmd = &cobra.Command{
 
 func init() {
 	rootCmd.AddCommand(listLoansCmd)
-	listLoansCmd.Flags().String("ids", "", "Comma-separated list of loan IDs")
+	listLoansCmd.Flags().StringP(utils.IdsFlag, "i", "", "Comma-separated list of loan IDs")
 	listLoansCmd.Flags().StringP(utils.FormatFlag, "z", "false", "Pass true for formatted JSON. Default is false")
 }

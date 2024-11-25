@@ -19,7 +19,7 @@ package utils
 const (
 	// ID related flags
 	AccountIdFlag         = "account-id"
-	ClientOrderIdFlag     = "client-order-id"
+	ClientOrderIdFlag     = "client-oid"
 	CoinbaseAccountIdFlag = "coinbase-account-id"
 	ConversionIdFlag      = "conversion-id"
 	CurrencyIdFlag        = "currency-id"
@@ -35,10 +35,11 @@ const (
 	WrappedAssetIdFlag    = "wrapped-asset-id"
 
 	// Order related flags
-	BaseQuantityFlag   = "base-quantity"
+	SizeFlag           = "size"
 	CancelAfterFlag    = "cancel-after"
 	FundsFlag          = "funds"
-	LimitPriceFlag     = "limit-price"
+	LimitPriceFlag     = "price"
+	StopFlag           = "stop"
 	MaxFloorFlag       = "max-floor"
 	OrderSideFlag      = "order-side"
 	OrderTypeFlag      = "order-type"
@@ -48,6 +49,7 @@ const (
 	StpFlag            = "stp"
 	TimeInForceFlag    = "time-in-force"
 	TypeFlag           = "type"
+	PostOnlyFlag       = "post-only"
 
 	// Currency and amount related flags
 	AmountFlag       = "amount"
@@ -60,6 +62,11 @@ const (
 	// Address related flags
 	AddressFlag           = "address"
 	AddressesFlag         = "addresses"
+	CurrenciesFlag        = "currencies"
+	DestinationTagsFlag   = "destination-tags"
+	IsVerifiedWalletsFlag = "is-verified-wallets"
+	VaspIdsFlag           = "vasp-ids"
+	LabelsFlag            = "labels"
 	BlockchainAddressFlag = "blockchain-address"
 	DestinationTagFlag    = "destination-tag"
 	NetworkFlag           = "network"
@@ -103,6 +110,7 @@ const (
 	DestinationSymbolFlag    = "destination-symbol"
 	FormatFlag               = "format"
 	FromFlag                 = "from"
+	IdsFlag                  = "ids"
 	IdemFlag                 = "idem"
 	IgnoreExpiredFlag        = "ignore-expired"
 	InterestRateFlag         = "interest-rate"

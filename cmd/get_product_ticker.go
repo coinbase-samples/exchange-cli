@@ -64,6 +64,8 @@ var getProductTickerCmd = &cobra.Command{
 
 func init() {
 	rootCmd.AddCommand(getProductTickerCmd)
-	getProductTickerCmd.Flags().StringP(utils.ProductIdFlag, "p", "", "Product ID")
+	getProductTickerCmd.Flags().StringP(utils.ProductIdFlag, "p", "", "Product ID (Required)")
 	getProductTickerCmd.Flags().StringP(utils.FormatFlag, "z", "false", "Pass true for formatted JSON. Default is false")
+
+	getProductTickerCmd.MarkFlagRequired(utils.ProductIdFlag)
 }

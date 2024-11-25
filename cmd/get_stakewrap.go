@@ -64,6 +64,8 @@ var getStakewrapCmd = &cobra.Command{
 
 func init() {
 	rootCmd.AddCommand(getStakewrapCmd)
-	getStakewrapCmd.Flags().StringP(utils.StakeWrapIdFlag, "s", "", "Stakewrap ID")
+	getStakewrapCmd.Flags().StringP(utils.StakeWrapIdFlag, "s", "", "Stakewrap ID (Required)")
 	getStakewrapCmd.Flags().StringP(utils.FormatFlag, "z", "false", "Pass true for formatted JSON. Default is false")
+
+	getStakewrapCmd.MarkFlagRequired(utils.StakeWrapIdFlag)
 }

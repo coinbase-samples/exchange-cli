@@ -74,7 +74,7 @@ var cancelOrderCmd = &cobra.Command{
 
 func init() {
 	rootCmd.AddCommand(cancelOrderCmd)
-	cancelOrderCmd.Flags().StringP(utils.OrderIdFlag, "o", "", "Order ID")
+	cancelOrderCmd.Flags().StringP(utils.OrderIdFlag, "o", "", "Order ID (Required)")
 	cancelOrderCmd.Flags().StringP(utils.ProfileIdFlag, "p", "", "Profile ID")
 	cancelOrderCmd.Flags().StringP(utils.ProductIdFlag, "r", "", "Product ID")
 	cancelOrderCmd.Flags().StringP(utils.FormatFlag, "z", "false", "Pass true for formatted JSON. Default is false")

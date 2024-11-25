@@ -72,7 +72,8 @@ func init() {
 	rootCmd.AddCommand(deleteProfileCmd)
 	deleteProfileCmd.Flags().StringP(utils.ProfileIdFlag, "p", "", "Profile ID (Required)")
 	deleteAddressCmd.Flags().StringP(utils.ToFlag, "t", "", "Profile ID that will receive all funds (Required)")
+	deleteProfileCmd.Flags().StringP(utils.FormatFlag, "z", "false", "Pass true for formatted JSON. Default is false")
+
 	deleteProfileCmd.MarkFlagRequired(utils.ProfileIdFlag)
 	deleteProfileCmd.MarkFlagRequired(utils.ToFlag)
-	deleteProfileCmd.Flags().StringP(utils.FormatFlag, "z", "false", "Pass true for formatted JSON. Default is false")
 }

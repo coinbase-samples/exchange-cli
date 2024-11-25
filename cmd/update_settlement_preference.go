@@ -70,7 +70,9 @@ var updateSettlementPreferenceCmd = &cobra.Command{
 
 func init() {
 	rootCmd.AddCommand(updateSettlementPreferenceCmd)
-	updateSettlementPreferenceCmd.Flags().StringP(utils.UserIdFlag, "u", "", "User ID")
-	updateSettlementPreferenceCmd.Flags().StringP(utils.SettlementPreferenceFlag, "s", "", "Settlement preference")
+	updateSettlementPreferenceCmd.Flags().StringP(utils.UserIdFlag, "u", "", "User ID (Required)")
+	updateSettlementPreferenceCmd.Flags().StringP(utils.SettlementPreferenceFlag, "s", "", "Settlement preference (Required)")
 	updateSettlementPreferenceCmd.Flags().StringP(utils.FormatFlag, "z", "false", "Pass true for formatted JSON. Default is false")
+	updateSettlementPreferenceCmd.MarkFlagRequired(utils.UserIdFlag)
+	updateSettlementPreferenceCmd.MarkFlagRequired(utils.SettlementPreferenceFlag)
 }

@@ -80,9 +80,9 @@ var repayLoanInterestCmd = &cobra.Command{
 func init() {
 	rootCmd.AddCommand(repayLoanInterestCmd)
 	repayLoanInterestCmd.Flags().StringP(utils.IdemFlag, "i", "", "Idempotency key")
-	repayLoanInterestCmd.Flags().StringP(utils.ProfileIdFlag, "p", "", "From profile ID")
-	repayLoanInterestCmd.Flags().StringP(utils.CurrencyFlag, "c", "", "Currency")
-	repayLoanInterestCmd.Flags().StringP(utils.NativeAmountFlag, "n", "", "Native amount")
+	repayLoanInterestCmd.Flags().StringP(utils.ProfileIdFlag, "p", "", "From profile ID (Required)")
+	repayLoanInterestCmd.Flags().StringP(utils.CurrencyFlag, "c", "", "Currency (Required)")
+	repayLoanInterestCmd.Flags().StringP(utils.NativeAmountFlag, "n", "", "Native amount (Required)")
 	repayLoanInterestCmd.Flags().StringP(utils.FormatFlag, "z", "false", "Pass true for formatted JSON. Default is false")
 
 	repayLoanInterestCmd.MarkFlagRequired(utils.ProfileIdFlag)

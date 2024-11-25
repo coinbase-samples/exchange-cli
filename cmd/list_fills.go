@@ -95,8 +95,8 @@ func init() {
 	listFillsCmd.Flags().StringP(utils.MarketTypeFlag, "m", "", "Market type")
 	listFillsCmd.Flags().StringP(utils.StartDateFlag, "s", "", "Start date")
 	listFillsCmd.Flags().StringP(utils.EndDateFlag, "e", "", "End date")
-	listFillsCmd.Flags().String(utils.PaginationBeforeFlag, "b", "Pagination before cursor")
-	listFillsCmd.Flags().String(utils.PaginationAfterFlag, "a", "Pagination after cursor")
-	listFillsCmd.Flags().String(utils.PaginationLimitFlag, "l", "Pagination limit")
+	listFillsCmd.Flags().StringP(utils.PaginationBeforeFlag, "b", "", "Pagination before cursor")
+	listFillsCmd.Flags().StringP(utils.PaginationAfterFlag, "a", "", "Pagination after cursor")
+	listFillsCmd.Flags().StringP(utils.PaginationLimitFlag, "l", "", "Pagination limit")
 	listFillsCmd.Flags().StringP(utils.FormatFlag, "z", "false", "Pass true for formatted JSON. Default is false")
 }

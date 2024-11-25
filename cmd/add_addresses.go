@@ -17,7 +17,6 @@
 package cmd
 
 import (
-	"encoding/json"
 	"exchange-cli/utils"
 	"fmt"
 	"github.com/coinbase-samples/exchange-sdk-go/addressbook"
@@ -36,24 +35,75 @@ var addAddressesCmd = &cobra.Command{
 
 		addressBookService := addressbook.NewAddressBookService(restClient)
 
-		addressesJson, err := cmd.Flags().GetString(utils.AddressesFlag)
+		currencies, err := cmd.Flags().GetStringSlice("currencies")
+		if err != nil {
+			return err
+		}
+		addresses, err := cmd.Flags().GetStringSlice(utils.AddressesFlag)
+		if err != nil {
+			return err
+		}
+		destinationTags, err := cmd.Flags().GetStringSlice(utils.DestinationTagsFlag)
+		if err != nil {
+			return err
+		}
+		labels, err := cmd.Flags().GetStringSlice(utils.LabelsFlag)
+		if err != nil {
+			return err
+		}
+		isVerifiedWallets, err := cmd.Flags().GetBoolSlice(utils.IsVerifiedWalletsFlag)
+		if err != nil {
+			return err
+		}
+		vaspIds, err := cmd.Flags().GetStringSlice(utils.VaspIdsFlag)
 		if err != nil {
 			return err
 		}
 
-		var addresses []model.AddressSummary
-		if err := json.Unmarshal([]byte(addressesJson), &addresses); err != nil {
-			return fmt.Errorf("failed to parse addresses JSON: %w", err)
+		if len(currencies) != len(addresses) {
+			return fmt.Errorf("currencies and addresses must have the same number of elements")
+		}
+
+		addressSummaries := make([]model.AddressSummary, len(currencies))
+		for i := range currencies {
+			var destTag *string
+			if i < len(destinationTags) {
+				destTag = &destinationTags[i]
+			}
+
+			var label string
+			if i < len(labels) {
+				label = labels[i]
+			}
+
+			var isVerified bool
+			if i < len(isVerifiedWallets) {
+				isVerified = isVerifiedWallets[i]
+			}
+
+			var vaspId *string
+			if i < len(vaspIds) {
+				vaspId = &vaspIds[i]
+			}
+
+			addressSummaries[i] = model.AddressSummary{
+				Currency: currencies[i],
+				To: model.To{
+					Address:        addresses[i],
+					DestinationTag: destTag,
+				},
+				Label:                      label,
+				IsVerifiedSelfHostedWallet: isVerified,
+				VaspId:                     vaspId,
+			}
 		}
 
 		ctx, cancel := utils.GetContextWithTimeout()
 		defer cancel()
 
-		request := &addressbook.AddAddressesRequest{
-			Addresses: addresses,
-		}
-
-		response, err := addressBookService.AddAddresses(ctx, request)
+		response, err := addressBookService.AddAddresses(ctx, &addressbook.AddAddressesRequest{
+			Addresses: addressSummaries,
+		})
 		if err != nil {
 			return fmt.Errorf("failed to add addresses: %w", err)
 		}
@@ -71,8 +121,13 @@ var addAddressesCmd = &cobra.Command{
 func init() {
 	rootCmd.AddCommand(addAddressesCmd)
 
-	addAddressesCmd.Flags().String(utils.AddressesFlag, "a", "JSON array of addresses to add to the address book (Required)")
-	addAddressesCmd.Flags().StringP(utils.FormatFlag, "z", "false", "Pass true for formatted JSON. Default is false")
+	addAddressesCmd.Flags().StringSlice(utils.CurrenciesFlag, []string{}, "List of currencies (e.g., BTC, ETH) (Required)")
+	addAddressesCmd.Flags().StringSlice(utils.AddressesFlag, []string{}, "List of crypto addresses (Required)")
+	addAddressesCmd.Flags().StringSlice(utils.DestinationTagsFlag, []string{}, "List of destination tags (optional)")
+	addAddressesCmd.Flags().StringSlice(utils.LabelsFlag, []string{}, "List of labels/nicknames for each address (optional)")
+	addAddressesCmd.Flags().BoolSlice(utils.IsVerifiedWalletsFlag, []bool{}, "List of flags indicating if the wallets are verified (optional)")
+	addAddressesCmd.Flags().StringSlice(utils.VaspIdsFlag, []string{}, "List of VASP IDs for each address (optional)")
 
+	addAddressesCmd.MarkFlagRequired(utils.CurrenciesFlag)
 	addAddressesCmd.MarkFlagRequired(utils.AddressesFlag)
 }

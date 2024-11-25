@@ -64,6 +64,8 @@ var getUserExchangeLimitsCmd = &cobra.Command{
 
 func init() {
 	rootCmd.AddCommand(getUserExchangeLimitsCmd)
-	getUserExchangeLimitsCmd.Flags().StringP(utils.UserIdFlag, "u", "", "User ID")
+	getUserExchangeLimitsCmd.Flags().StringP(utils.UserIdFlag, "u", "", "User ID (Required)")
 	getUserExchangeLimitsCmd.Flags().StringP(utils.FormatFlag, "z", "false", "Pass true for formatted JSON. Default is false")
+
+	getUserExchangeLimitsCmd.MarkFlagRequired(utils.UserIdFlag)
 }

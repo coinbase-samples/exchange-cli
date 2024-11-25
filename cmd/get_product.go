@@ -65,4 +65,6 @@ func init() {
 	rootCmd.AddCommand(getProductCmd)
 	getProductCmd.Flags().StringP(utils.ProductIdFlag, "p", "", "Product ID (Required)")
 	getProductCmd.Flags().StringP(utils.FormatFlag, "z", "false", "Pass true for formatted JSON. Default is false")
+
+	getProductCmd.MarkFlagRequired(utils.ProductIdFlag)
 }

@@ -55,7 +55,7 @@ var createOrderCmd = &cobra.Command{
 		if err != nil {
 			return err
 		}
-		baseQuantity, err := cmd.Flags().GetString(utils.BaseQuantityFlag)
+		size, err := cmd.Flags().GetString(utils.SizeFlag)
 		if err != nil {
 			return err
 		}
@@ -92,6 +92,11 @@ var createOrderCmd = &cobra.Command{
 			return err
 		}
 
+		postOnly, err := cmd.Flags().GetBool(utils.PostOnlyFlag)
+		if err != nil {
+			return err
+		}
+
 		ctx, cancel := utils.GetContextWithTimeout()
 		defer cancel()
 
@@ -101,7 +106,7 @@ var createOrderCmd = &cobra.Command{
 			Side:           side,
 			ProductId:      productId,
 			Price:          limitPrice,
-			Size:           baseQuantity,
+			Size:           size,
 			TimeInForce:    timeInForce,
 			ClientOid:      clientOrderId,
 			StopPrice:      stopPrice,
@@ -110,6 +115,7 @@ var createOrderCmd = &cobra.Command{
 			CancelAfter:    cancelAfter,
 			MaxFloor:       maxFloor,
 			Stp:            stp,
+			PostOnly:       postOnly,
 		}
 
 		response, err := ordersService.CreateOrder(ctx, request)
@@ -130,11 +136,12 @@ var createOrderCmd = &cobra.Command{
 func init() {
 	rootCmd.AddCommand(createOrderCmd)
 	createOrderCmd.Flags().StringP(utils.ProfileIdFlag, "p", "", "Profile ID")
-	createOrderCmd.Flags().StringP(utils.TypeFlag, "t", "", "Order type")
-	createOrderCmd.Flags().StringP(utils.SideFlag, "s", "", "Order side")
-	createOrderCmd.Flags().StringP(utils.ProductIdFlag, "r", "", "Product ID")
+	createOrderCmd.Flags().StringP(utils.TypeFlag, "t", "", "Order type (Required)")
+	createOrderCmd.Flags().StringP(utils.SideFlag, "s", "", "Order side (Required)")
+	createOrderCmd.Flags().StringP(utils.ProductIdFlag, "r", "", "Product ID (Required)")
 	createOrderCmd.Flags().StringP(utils.LimitPriceFlag, "l", "", "Limit price (required for LIMIT orders)")
-	createOrderCmd.Flags().StringP(utils.BaseQuantityFlag, "q", "", "Base quantity")
+	createOrderCmd.Flags().StringP(utils.StopFlag, "q", "", "Stop type")
+	createOrderCmd.Flags().StringP(utils.SizeFlag, "u", "", "Size")
 	createOrderCmd.Flags().StringP(utils.TimeInForceFlag, "f", "", "Time in force")
 	createOrderCmd.Flags().StringP(utils.ClientOrderIdFlag, "c", "", "Client Order ID")
 	createOrderCmd.Flags().StringP(utils.StopPriceFlag, "x", "", "Stop price")
@@ -143,10 +150,10 @@ func init() {
 	createOrderCmd.Flags().StringP(utils.CancelAfterFlag, "a", "", "Cancel after time")
 	createOrderCmd.Flags().StringP(utils.MaxFloorFlag, "m", "", "Max floor")
 	createOrderCmd.Flags().StringP(utils.StpFlag, "v", "", "Self trade prevention")
+	createOrderCmd.Flags().BoolP(utils.PostOnlyFlag, "o", false, "Post only")
 	createOrderCmd.Flags().StringP(utils.FormatFlag, "z", "false", "Pass true for formatted JSON. Default is false")
 
-	createOrderCmd.MarkFlagRequired(utils.OrderTypeFlag)
-	createOrderCmd.MarkFlagRequired(utils.OrderSideFlag)
+	createOrderCmd.MarkFlagRequired(utils.TypeFlag)
+	createOrderCmd.MarkFlagRequired(utils.SideFlag)
 	createOrderCmd.MarkFlagRequired(utils.ProductIdFlag)
-	createOrderCmd.MarkFlagRequired(utils.BaseQuantityFlag)
 }

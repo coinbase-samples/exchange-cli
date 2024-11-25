@@ -95,12 +95,12 @@ var openNewLoanCmd = &cobra.Command{
 func init() {
 	rootCmd.AddCommand(openNewLoanCmd)
 	openNewLoanCmd.Flags().StringP(utils.LoanIdFlag, "l", "", "Loan ID")
-	openNewLoanCmd.Flags().StringP(utils.CurrencyFlag, "c", "", "Currency")
-	openNewLoanCmd.Flags().StringP(utils.NativeAmountFlag, "n", "", "Native amount")
-	openNewLoanCmd.Flags().StringP(utils.InterestRateFlag, "i", "", "Interest rate")
-	openNewLoanCmd.Flags().StringP(utils.StartDateFlag, "s", "", "Term start date")
-	openNewLoanCmd.Flags().StringP(utils.EndDateFlag, "e", "", "Term end date")
-	openNewLoanCmd.Flags().StringP(utils.ProfileIdFlag, "p", "", "Profile ID")
+	openNewLoanCmd.Flags().StringP(utils.CurrencyFlag, "c", "", "Currency (Required)")
+	openNewLoanCmd.Flags().StringP(utils.NativeAmountFlag, "n", "", "Native amount (Required)")
+	openNewLoanCmd.Flags().StringP(utils.InterestRateFlag, "i", "", "Interest rate (Required)")
+	openNewLoanCmd.Flags().StringP(utils.StartDateFlag, "s", "", "Term start date (Required)")
+	openNewLoanCmd.Flags().StringP(utils.EndDateFlag, "e", "", "Term end date (Required)")
+	openNewLoanCmd.Flags().StringP(utils.ProfileIdFlag, "p", "", "Profile ID (Required)")
 	openNewLoanCmd.Flags().StringP(utils.FormatFlag, "z", "false", "Pass true for formatted JSON. Default is false")
 
 	openNewLoanCmd.MarkFlagRequired(utils.CurrencyFlag)

@@ -64,6 +64,8 @@ var getWrappedAssetConversionRateCmd = &cobra.Command{
 
 func init() {
 	rootCmd.AddCommand(getWrappedAssetConversionRateCmd)
-	getWrappedAssetConversionRateCmd.Flags().StringP(utils.WrappedAssetIdFlag, "w", "", "Wrapped Asset ID")
+	getWrappedAssetConversionRateCmd.Flags().StringP(utils.WrappedAssetIdFlag, "w", "", "Wrapped Asset ID (Required)")
 	getWrappedAssetConversionRateCmd.Flags().StringP(utils.FormatFlag, "z", "false", "Pass true for formatted JSON. Default is false")
+
+	getWrappedAssetConversionRateCmd.MarkFlagRequired(utils.WrappedAssetIdFlag)
 }

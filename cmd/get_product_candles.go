@@ -79,9 +79,11 @@ var getProductCandlesCmd = &cobra.Command{
 
 func init() {
 	rootCmd.AddCommand(getProductCandlesCmd)
-	getProductCandlesCmd.Flags().StringP(utils.ProductIdFlag, "p", "", "Product ID")
+	getProductCandlesCmd.Flags().StringP(utils.ProductIdFlag, "p", "", "Product ID (Required)")
 	getProductCandlesCmd.Flags().StringP(utils.GranularityFlag, "g", "", "Granularity")
 	getProductCandlesCmd.Flags().StringP(utils.StartDateFlag, "s", "", "Start date")
 	getProductCandlesCmd.Flags().StringP(utils.EndDateFlag, "e", "", "End date")
 	getProductCandlesCmd.Flags().StringP(utils.FormatFlag, "z", "false", "Pass true for formatted JSON. Default is false")
+
+	getProductCandlesCmd.MarkFlagRequired(utils.ProductIdFlag)
 }

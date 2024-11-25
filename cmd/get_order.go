@@ -68,7 +68,7 @@ var getOrderCmd = &cobra.Command{
 
 func init() {
 	rootCmd.AddCommand(getOrderCmd)
-	getOrderCmd.Flags().StringP(utils.OrderIdFlag, "o", "", "Order ID")
+	getOrderCmd.Flags().StringP(utils.OrderIdFlag, "o", "", "Order ID (Required)")
 	getOrderCmd.Flags().StringP(utils.MarketTypeFlag, "m", "", "Market type")
 	getOrderCmd.Flags().StringP(utils.FormatFlag, "z", "false", "Pass true for formatted JSON. Default is false")
 

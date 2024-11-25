@@ -82,9 +82,9 @@ func init() {
 	rootCmd.AddCommand(listReportsCmd)
 	listReportsCmd.Flags().StringP(utils.ProfileIdFlag, "p", "", "Profile ID")
 	listReportsCmd.Flags().StringP(utils.TypeFlag, "t", "", "Report type")
-	listReportsCmd.Flags().String(utils.IgnoreExpiredFlag, "", "Ignore expired reports")
-	listReportsCmd.Flags().String(utils.PaginationBeforeFlag, "", "Request page before this pagination id")
-	listReportsCmd.Flags().String(utils.PaginationAfterFlag, "", "Request page after this pagination id")
-	listReportsCmd.Flags().String(utils.PaginationLimitFlag, "", "Maximum number of results to return")
+	listReportsCmd.Flags().StringP(utils.IgnoreExpiredFlag, "e", "", "Ignore expired reports")
+	listReportsCmd.Flags().StringP(utils.PaginationBeforeFlag, "b", "", "Request page before this pagination id")
+	listReportsCmd.Flags().StringP(utils.PaginationAfterFlag, "a", "", "Request page after this pagination id")
+	listReportsCmd.Flags().StringP(utils.PaginationLimitFlag, "l", "", "Maximum number of results to return")
 	listReportsCmd.Flags().StringP(utils.FormatFlag, "z", "false", "Pass true for formatted JSON. Default is false")
 }

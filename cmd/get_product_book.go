@@ -71,4 +71,6 @@ func init() {
 	getProductBookCmd.Flags().StringP(utils.ProductIdFlag, "p", "", "Product ID (Required)")
 	getProductBookCmd.Flags().StringP(utils.LevelFlag, "l", "", "Level")
 	getProductBookCmd.Flags().StringP(utils.FormatFlag, "z", "false", "Pass true for formatted JSON. Default is false")
+
+	getProductBookCmd.MarkFlagRequired(utils.ProductIdFlag)
 }

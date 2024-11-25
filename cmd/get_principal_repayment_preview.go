@@ -82,5 +82,5 @@ func init() {
 	getPrincipalRepaymentPreviewCmd.Flags().StringP(utils.NativeAmountFlag, "n", "", "Native Amount")
 	getPrincipalRepaymentPreviewCmd.Flags().StringP(utils.FormatFlag, "z", "false", "Pass true for formatted JSON. Default is false")
 
-	getPrincipalRepaymentPreviewCmd.MarkFlagRequired("loan-id")
+	getPrincipalRepaymentPreviewCmd.MarkFlagRequired(utils.LoanIdFlag)
 }

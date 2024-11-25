@@ -77,10 +77,10 @@ func init() {
 	rootCmd.AddCommand(getAccountTransfersCmd)
 
 	getAccountTransfersCmd.Flags().StringP(utils.AccountIdFlag, "a", "", "Account ID (Required)")
-	getAccountTransfersCmd.Flags().String(utils.TypeFlag, "", "Type of transfers to filter")
-	getAccountTransfersCmd.Flags().String(utils.PaginationBeforeFlag, "b", "Pagination before cursor")
-	getAccountTransfersCmd.Flags().String(utils.PaginationAfterFlag, "a", "Pagination after cursor")
-	getAccountTransfersCmd.Flags().String(utils.PaginationLimitFlag, "l", "Pagination limit")
+	getAccountTransfersCmd.Flags().StringP(utils.TypeFlag, "t", "", "Type of transfers to filter")
+	getAccountTransfersCmd.Flags().StringP(utils.PaginationBeforeFlag, "b", "", "Pagination before cursor")
+	getAccountTransfersCmd.Flags().StringP(utils.PaginationAfterFlag, "a", "", "Pagination after cursor")
+	getAccountTransfersCmd.Flags().StringP(utils.PaginationLimitFlag, "l", "", "Pagination limit")
 	getAccountTransfersCmd.Flags().StringP(utils.FormatFlag, "z", "false", "Pass true for formatted JSON. Default is false")
 
 	getAccountTransfersCmd.MarkFlagRequired(utils.AccountIdFlag)

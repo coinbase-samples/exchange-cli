@@ -70,9 +70,11 @@ var getProductTradesCmd = &cobra.Command{
 
 func init() {
 	rootCmd.AddCommand(getProductTradesCmd)
-	getProductTradesCmd.Flags().StringP(utils.ProductIdFlag, "p", "", "Product ID")
+	getProductTradesCmd.Flags().StringP(utils.ProductIdFlag, "p", "", "Product ID (Required)")
 	getProductTradesCmd.Flags().Int32P(utils.PaginationLimitFlag, "l", 0, "Number of results per request")
 	getProductTradesCmd.Flags().StringP(utils.PaginationBeforeFlag, "b", "", "Before cursor for pagination")
 	getProductTradesCmd.Flags().StringP(utils.PaginationAfterFlag, "a", "", "After cursor for pagination")
 	getProductTradesCmd.Flags().StringP(utils.FormatFlag, "z", "false", "Pass true for formatted JSON. Default is false")
+
+	getProductTradesCmd.MarkFlagRequired(utils.ProductIdFlag)
 }

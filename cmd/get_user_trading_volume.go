@@ -64,6 +64,8 @@ var getUserTradingVolumeCmd = &cobra.Command{
 
 func init() {
 	rootCmd.AddCommand(getUserTradingVolumeCmd)
-	getUserTradingVolumeCmd.Flags().StringP(utils.UserIdFlag, "u", "", "User ID")
+	getUserTradingVolumeCmd.Flags().StringP(utils.UserIdFlag, "u", "", "User ID (Required)")
 	getUserTradingVolumeCmd.Flags().StringP(utils.FormatFlag, "z", "false", "Pass true for formatted JSON. Default is false")
+
+	getUserTradingVolumeCmd.MarkFlagRequired(utils.UserIdFlag)
 }

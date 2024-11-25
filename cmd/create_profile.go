@@ -65,7 +65,7 @@ var createProfileCmd = &cobra.Command{
 
 func init() {
 	rootCmd.AddCommand(createProfileCmd)
-	createProfileCmd.Flags().StringP(utils.NameFlag, "n", "", "Name of the profile to create")
+	createProfileCmd.Flags().StringP(utils.NameFlag, "n", "", "Name of the profile to create (Required)")
 	createProfileCmd.Flags().StringP(utils.FormatFlag, "z", "false", "Pass true for formatted JSON. Default is false")
 	createProfileCmd.MarkFlagRequired(utils.NameFlag)
 }

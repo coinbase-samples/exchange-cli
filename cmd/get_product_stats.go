@@ -64,6 +64,8 @@ var getProductStatsCmd = &cobra.Command{
 
 func init() {
 	rootCmd.AddCommand(getProductStatsCmd)
-	getProductStatsCmd.Flags().StringP(utils.ProductIdFlag, "p", "", "Product ID")
+	getProductStatsCmd.Flags().StringP(utils.ProductIdFlag, "p", "", "Product ID (Required)")
 	getProductStatsCmd.Flags().StringP(utils.FormatFlag, "z", "false", "Pass true for formatted JSON. Default is false")
+
+	getProductStatsCmd.MarkFlagRequired(utils.ProductIdFlag)
 }
