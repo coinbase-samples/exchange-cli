@@ -1,6 +1,6 @@
 module exchange-cli
 
-go 1.23.2
+go 1.25.0
 
 require (
 	github.com/coinbase-samples/core-go v0.2.0
@@ -13,6 +13,6 @@ require (
 	github.com/inconshreveable/mousetrap v1.1.0 // indirect
 	github.com/shopspring/decimal v1.4.0 // indirect
 	github.com/spf13/pflag v1.0.5 // indirect
-	golang.org/x/net v0.30.0 // indirect
-	golang.org/x/text v0.19.0 // indirect
+	golang.org/x/net v0.55.0 // indirect
+	golang.org/x/text v0.37.0 // indirect
 )
